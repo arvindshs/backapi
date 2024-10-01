@@ -10,7 +10,7 @@ export async function GET() {
 export async function POST(response) {
   const client = await clientPromise;
   const res = await response.json();
-  const db = await client.db("userdtabase");
+  const db = await client.db("wasteuserdtabase");
   const posts = await db
     .collection("users")
     .find({ email: res.email })
@@ -27,7 +27,7 @@ export async function POST(response) {
       serverotp
     );
     if (mailstst) {
-      const db = await client.db("userdtabase");
+      const db = await client.db("wasteuserdtabase");
       const posts = await db
         .collection("otp")
         .insertOne({ emailId: res.email, otp: serverotp });

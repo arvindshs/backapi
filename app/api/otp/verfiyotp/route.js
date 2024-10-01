@@ -7,7 +7,7 @@ export async function GET() {
 export async function POST(response) {
   const res = await response.json();
   const client = await clientPromise;
-  const db = await client.db("userdtabase");
+  const db = await client.db("wasteuserdtabase");
   const posts = await db
     .collection("otp")
     .find({ emailId: res.email })
@@ -16,7 +16,7 @@ export async function POST(response) {
   if (posts) {
     if (posts.length !== 0) {
       if (Number(res.otp) === posts[0].otp) {
-        const db = await client.db("userdtabase");
+        const db = await client.db("wasteuserdtabase");
         const postdb = await db
           .collection("otp")
           .deleteOne({ emailId: res.email });

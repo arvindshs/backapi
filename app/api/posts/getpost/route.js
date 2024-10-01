@@ -9,7 +9,7 @@ export async function POST(response) {
   const fetchdata = await response;
   const fetdata = await fetchdata.json();
   const client = await clientPromise;
-  const db = await client.db("userdtabase");
+  const db = await client.db("wasteuserdtabase");
   const insertresponse = await db
     .collection("posts")
     .find({ userID: fetdata.userID })
